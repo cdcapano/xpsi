@@ -1,0 +1,11 @@
+name: xpsi
+channels:
+  - defaults
+dependencies:
+  - python>=3.6
+  - numpy
+  - cython
+  - matplotlib
+  - scipy
+  - gsl
+  - wrapt
