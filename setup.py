@@ -30,13 +30,13 @@ if __name__ == '__main__':
             raise
 
         try:
-            gsl_version = sub.check_output(['gsl-config','--version'])[:-1]
-            gsl_prefix = sub.check_output(['gsl-config','--prefix'])[:-1]
+            gsl_version = sub.check_output(['gsl-config','--version'])[:-1].decode()
+            gsl_prefix = sub.check_output(['gsl-config','--prefix'])[:-1].decode()
         except Exception:
             print('GNU Scientific Library cannot be located.')
             raise
         else:
-            print('GSL version: ' + gsl_version)
+            print('GSL version:', gsl_version)
             libraries = ['gsl','gslcblas','m'] # default BLAS interface for gsl
             library_dirs = [gsl_prefix + '/lib']
             _src_dir = os.path.dirname(os.path.abspath(__file__))
