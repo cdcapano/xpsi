@@ -1,7 +1,7 @@
 from __future__ import division, print_function
 
 from .global_imports import *
-import global_imports
+# import global_imports
 
 from . import make_verbose, _verbose
 
