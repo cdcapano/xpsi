@@ -5,8 +5,6 @@ from . import global_imports
 
 from . import make_verbose
 
-import string
-
 from types import MethodType
 from abc import ABCMeta, abstractmethod
 
@@ -264,8 +262,8 @@ class Parameter(object):
     @doc.setter
     def doc(self, doc):
         if isinstance(doc, _six.string_types):
-            lines = [string.strip(line) for line in doc.splitlines()]
-            doc = string.join([line for line in lines if line], '\n')
+            lines = [line.strip() for line in doc.splitlines()]
+            doc = '\n'.join([line for line in lines if line])
             if doc[-1] != '.': doc += '.'
             self.__doc__ =  doc
         elif doc is not None:
