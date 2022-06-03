@@ -174,7 +174,14 @@ class Parameter(object):
             if not isinstance(value, Derive):
                 raise TypeError('It is recommended to subclass the prototype '
                                 'abstract base class ``Derive``.')
-            self.evaluate = MethodType(value, self, Parameter)
+#            self.evaluate = MethodType(value, self, Parameter)
+#            Got a wrokaround for Python3 from: https://stackoverflow.com/questions/41057883/class-bound-function-python-2-and-3 
+            try:
+                self.evaluate = MethodType(value, self, Parameter)
+            except TypeError:
+                # too many arguments to MethodType, we must be in Python3
+                self.evaluate = value
+
             self.derived = True
         else:
             self.value = value
